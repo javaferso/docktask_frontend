@@ -1,12 +1,90 @@
-# React + Vite
+# 🚀 DockTask Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Frontend de DockTask** — Aplicación de gestión de proyectos y mensajes, construida con **React 18 + Vite**, usando componentes modernos, hooks y Tailwind CSS.  
+El backend está implementado en Flask + PostgreSQL.
 
-Currently, two official plugins are available:
+![DockTask Dashboard Screenshot](public/vite.svg) <!-- Cambia esto por una imagen real de tu app si la tienes -->
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## ✨ Características
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Autenticación JWT
+- Gestión de usuarios, proyectos y mensajes
+- Vistas tipo Kanban, Gantt y Calendario
+- UI moderna con **Tailwind CSS** + componentes reutilizables
+- API RESTful (conexión a backend Flask)
+- Experiencia optimizada para desktop
+
+---
+
+## 🛠️ Instalación local
+
+**Requisitos:**  
+- Node.js >= 18.x  
+- npm >= 9.x (o yarn/pnpm)
+
+```bash
+# Clona el repositorio
+git clone git@github.com:javaferso/docktask_frontend.git
+cd docktask_frontend
+
+# Instala dependencias
+npm install
+
+# Copia el ejemplo de variables de entorno
+cp .env.example .env
+# Edita .env según tu backend/API
+
+# Corre la app en modo desarrollo
+npm run dev
+
+# Abre http://localhost:5173
+⚡ Despliegue en Vercel
+Vercel detecta automáticamente proyectos Vite/React y los despliega en minutos:
+
+Haz Push de tu código a GitHub (rama main recomendada).
+
+Ve a vercel.com/import/git y selecciona tu repo.
+
+Configura las variables de entorno (.env) necesarias desde el dashboard de Vercel.
+
+Vercel compilará y publicará automáticamente cada push a main o cualquier rama seleccionada.
+
+Variables sugeridas en Vercel
+VITE_API_URL=https://<TU_BACKEND_URL>
+
+(Agrega aquí cualquier variable sensible requerida por tu app)
+
+🌐 Estructura del Proyecto
+├── public/
+├── src/
+│   ├── api/
+│   ├── assets/
+│   ├── components/
+│   ├── views/
+│   ├── ui/
+│   ├── hooks/
+│   ├── services/
+│   ├── main.jsx
+├── .env.example
+├── package.json
+├── tailwind.config.js
+├── vite.config.js
+└── README.md
+🧑‍💻 Scripts principales
+"scripts": {
+  "dev": "vite",
+  "build": "vite build",
+  "preview": "vite preview",
+  "lint": "eslint src --fix"
+}
+🤝 Colaboradores
+¡Pull Requests y sugerencias son bienvenidas!
+Contacta a Javier Ferreira para soporte o preguntas.
+
+📄 Licencia
+MIT
+
+Desarrollado con ❤️ por el equipo DockTask
+Backend API | Frontend
