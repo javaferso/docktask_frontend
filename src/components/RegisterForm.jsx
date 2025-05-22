@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { buildAxios } from '../api/axiosInstance';
-import { UserPlusIcon, UserIcon, LockClosedIcon } from '@heroicons/react/24/outline';
+import { UserPlusIcon, UserIcon, LockClosedIcon, MailIcon, PhoneIcon } from '@heroicons/react/24/outline';
 import { useNavigate } from 'react-router-dom';
 
 const RegisterForm = () => {
@@ -8,6 +8,8 @@ const RegisterForm = () => {
   const [password, setPassword] = useState('');
   const [nombre, setNombre] = useState('');
   const [apellido, setApellido] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
   const [mensaje, setMensaje] = useState('');
   const navigate = useNavigate();
 
@@ -15,6 +17,10 @@ const RegisterForm = () => {
   useEffect(() => {
     setUsername('');
     setPassword('');
+    setNombre('');
+    setApellido('');
+    setEmail('');
+    setPhone('');
     setMensaje('');
   }, []);
 
@@ -22,15 +28,23 @@ const RegisterForm = () => {
     e.preventDefault();
     try { 
       const axiosInstance = buildAxios();
-      const res = await axiosInstance.post('/register', {
+      const res = await axiosInstance.post('/api/register', {
         username,
-        password
+        password,
+        nombre,
+        apellido,
+        email,
+        phone
       });
       console.log(res.data);
       setMensaje('Usuario registrado exitosamente ✅');
       // Limpiar campos después de un registro exitoso
       setUsername('');
       setPassword('');
+      setNombre('');
+      setApellido('');
+      setEmail('');
+      setPhone('');
       // Redirigir al login después de 2 segundos
       setTimeout(() => {
         navigate('/');
@@ -100,6 +114,34 @@ const RegisterForm = () => {
             placeholder="Apellido"
             value={apellido}
             onChange={(e) => setApellido(e.target.value)}
+            required
+            className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            autoComplete="off"
+          />
+        </div>
+        <div className="flex justify-center">
+          <div className='absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none'>
+            <MailIcon className="h-5 w-5 text-gray-400" />
+          </div>
+          <input
+            type="text"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            autoComplete="off"
+          />
+        </div>
+        <div className="flex justify-center">
+          <div className='absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none'>
+            <PhoneIcon className="h-5 w-5 text-gray-400" />
+          </div>
+          <input
+            type="text"
+            placeholder="Telefono"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
             required
             className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             autoComplete="off"
