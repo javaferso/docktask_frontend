@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { buildAxios } from '../api/axiosInstance';
-import { UserPlusIcon, UserIcon, LockClosedIcon, MailIcon, PhoneIcon } from '@heroicons/react/24/outline';
+import { UserPlusIcon, UserIcon, LockClosedIcon, EnvelopeIcon, PhoneIcon,
+  UserCircleIcon, IdentificationIcon
+ } from '@heroicons/react/24/outline';
 import { useNavigate } from 'react-router-dom';
 
 const RegisterForm = () => {
@@ -93,7 +95,7 @@ const RegisterForm = () => {
         </div>
         <div className="flex justify-center">
           <div className='absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none'>
-            <UserIcon className="h-5 w-5 text-gray-400" />
+            <IdentificationIcon className="h-5 w-5 text-gray-400" />
           </div>
           <input
             type="text"
@@ -107,7 +109,7 @@ const RegisterForm = () => {
         </div>
         <div className="flex justify-center">
           <div className='absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none'>
-            <UserIcon className="h-5 w-5 text-gray-400" />
+            <UserCircleIcon className="h-5 w-5 text-gray-400" />
           </div>
           <input
             type="text"
@@ -121,7 +123,7 @@ const RegisterForm = () => {
         </div>
         <div className="flex justify-center">
           <div className='absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none'>
-            <MailIcon className="h-5 w-5 text-gray-400" />
+            <EnvelopeIcon className="h-5 w-5 text-gray-400" />
           </div>
           <input
             type="text"
