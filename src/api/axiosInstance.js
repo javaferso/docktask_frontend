@@ -20,7 +20,7 @@ export const buildAxios = (token) => {
     (error) => {
       if (error.response?.status === 401) {
         // Redirigir al login cuando hay un error 401
-        window.location.href = '/login';
+        window.location.href = `${window.location.origin}/login`;
       }
       return Promise.reject(error);
     }
