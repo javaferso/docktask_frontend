@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import { buildAxios } from '../api/axiosInstance';
 import { UserPlusIcon, UserIcon, LockClosedIcon } from '@heroicons/react/24/outline';
 import { useNavigate } from 'react-router-dom';
 
 const RegisterForm = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [nombre, setNombre] = useState('');
+  const [apellido, setApellido] = useState('');
   const [mensaje, setMensaje] = useState('');
   const navigate = useNavigate();
 
@@ -18,11 +20,13 @@ const RegisterForm = () => {
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    try {
-      const res = await axios.post('/api/register', {
+    try { 
+      const axiosInstance = buildAxios();
+      const res = await axiosInstance.post('/register', {
         username,
         password
       });
+      console.log(res.data);
       setMensaje('Usuario registrado exitosamente ✅');
       // Limpiar campos después de un registro exitoso
       setUsername('');
@@ -32,6 +36,7 @@ const RegisterForm = () => {
         navigate('/');
       }, 2000);
     } catch (err) {
+      console.log(err);
       if (err.response?.status === 409) {
         setMensaje('El usuario ya existe ❌');
       } else {
@@ -70,6 +75,34 @@ const RegisterForm = () => {
             required
             className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             autoComplete="new-password"
+          />
+        </div>
+        <div className="flex justify-center">
+          <div className='absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none'>
+            <UserIcon className="h-5 w-5 text-gray-400" />
+          </div>
+          <input
+            type="text"
+            placeholder="Nombre"
+            value={nombre}
+            onChange={(e) => setNombre(e.target.value)}
+            required
+            className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            autoComplete="off"
+          />
+        </div>
+        <div className="flex justify-center">
+          <div className='absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none'>
+            <UserIcon className="h-5 w-5 text-gray-400" />
+          </div>
+          <input
+            type="text"
+            placeholder="Apellido"
+            value={apellido}
+            onChange={(e) => setApellido(e.target.value)}
+            required
+            className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            autoComplete="off"
           />
         </div>
 
